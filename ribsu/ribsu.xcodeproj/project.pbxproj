@@ -1,0 +1,301 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 42;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7E6E66E509380C7D00A347D8 /* debug.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E6E66D109380C7D00A347D8 /* debug.h */; };
+		7E6E66E609380C7D00A347D8 /* printInterpretedError.c in Sources */ = {isa = PBXBuildFile; fileRef = 7E6E66D209380C7D00A347D8 /* printInterpretedError.c */; };
+		7E6E66E709380C7D00A347D8 /* printInterpretedError.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E6E66D309380C7D00A347D8 /* printInterpretedError.h */; };
+		7E6E66E809380C7D00A347D8 /* ribsu-util.c in Sources */ = {isa = PBXBuildFile; fileRef = 7E6E66D409380C7D00A347D8 /* ribsu-util.c */; };
+		7E6E66E909380C7D00A347D8 /* ribsu-util.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E6E66D509380C7D00A347D8 /* ribsu-util.h */; };
+		7E6E66EA09380C7D00A347D8 /* ribsu.c in Sources */ = {isa = PBXBuildFile; fileRef = 7E6E66D609380C7D00A347D8 /* ribsu.c */; };
+		7E6E66EB09380C7D00A347D8 /* ribsu.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E6E66D709380C7D00A347D8 /* ribsu.h */; };
+		7E6E66EC09380C7D00A347D8 /* tty.c in Sources */ = {isa = PBXBuildFile; fileRef = 7E6E66D809380C7D00A347D8 /* tty.c */; };
+		7E6E66ED09380C7D00A347D8 /* tty.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E6E66D909380C7D00A347D8 /* tty.h */; };
+		7E6E66EE09380C7D00A347D8 /* uirt-pronto.c in Sources */ = {isa = PBXBuildFile; fileRef = 7E6E66DA09380C7D00A347D8 /* uirt-pronto.c */; };
+		7E6E66EF09380C7D00A347D8 /* uirt-pronto.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E6E66DB09380C7D00A347D8 /* uirt-pronto.h */; };
+		7E6E66F009380C7D00A347D8 /* uirt-raw.c in Sources */ = {isa = PBXBuildFile; fileRef = 7E6E66DC09380C7D00A347D8 /* uirt-raw.c */; };
+		7E6E66F109380C7D00A347D8 /* uirt-raw.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E6E66DD09380C7D00A347D8 /* uirt-raw.h */; };
+		7E6E66F209380C7D00A347D8 /* uirt-raw2.c in Sources */ = {isa = PBXBuildFile; fileRef = 7E6E66DE09380C7D00A347D8 /* uirt-raw2.c */; };
+		7E6E66F309380C7D00A347D8 /* uirt-raw2.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E6E66DF09380C7D00A347D8 /* uirt-raw2.h */; };
+		7E6E66F409380C7D00A347D8 /* uirt-sm.c in Sources */ = {isa = PBXBuildFile; fileRef = 7E6E66E009380C7D00A347D8 /* uirt-sm.c */; };
+		7E6E66F509380C7D00A347D8 /* uirt-sm.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E6E66E109380C7D00A347D8 /* uirt-sm.h */; };
+		7E6E66F609380C7D00A347D8 /* uirt.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E6E66E209380C7D00A347D8 /* uirt.h */; };
+		7E6E66F709380C7D00A347D8 /* usb.c in Sources */ = {isa = PBXBuildFile; fileRef = 7E6E66E309380C7D00A347D8 /* usb.c */; };
+		7E6E66F809380C7D00A347D8 /* usb.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E6E66E409380C7D00A347D8 /* usb.h */; };
+		D2AAC0700554677100DB518D /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FB77AAFE841565C02AAC07 /* Carbon.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXBuildStyle section */
+		4F0BB7EC011F40E904CA0E50 /* Debug */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		4F0BB7ED011F40E904CA0E50 /* Release */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+			};
+			name = Release;
+		};
+/* End PBXBuildStyle section */
+
+/* Begin PBXFileReference section */
+		08FB77AAFE841565C02AAC07 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
+		32BAE0B70371A74B00C91783 /* ribsu_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ribsu_Prefix.pch; sourceTree = "<group>"; };
+		7E6E66D109380C7D00A347D8 /* debug.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = debug.h; sourceTree = "<group>"; };
+		7E6E66D209380C7D00A347D8 /* printInterpretedError.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = printInterpretedError.c; sourceTree = "<group>"; };
+		7E6E66D309380C7D00A347D8 /* printInterpretedError.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = printInterpretedError.h; sourceTree = "<group>"; };
+		7E6E66D409380C7D00A347D8 /* ribsu-util.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = "ribsu-util.c"; sourceTree = "<group>"; };
+		7E6E66D509380C7D00A347D8 /* ribsu-util.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = "ribsu-util.h"; sourceTree = "<group>"; };
+		7E6E66D609380C7D00A347D8 /* ribsu.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = ribsu.c; sourceTree = "<group>"; };
+		7E6E66D709380C7D00A347D8 /* ribsu.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = ribsu.h; sourceTree = "<group>"; };
+		7E6E66D809380C7D00A347D8 /* tty.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = tty.c; sourceTree = "<group>"; };
+		7E6E66D909380C7D00A347D8 /* tty.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = tty.h; sourceTree = "<group>"; };
+		7E6E66DA09380C7D00A347D8 /* uirt-pronto.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = "uirt-pronto.c"; sourceTree = "<group>"; };
+		7E6E66DB09380C7D00A347D8 /* uirt-pronto.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = "uirt-pronto.h"; sourceTree = "<group>"; };
+		7E6E66DC09380C7D00A347D8 /* uirt-raw.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = "uirt-raw.c"; sourceTree = "<group>"; };
+		7E6E66DD09380C7D00A347D8 /* uirt-raw.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = "uirt-raw.h"; sourceTree = "<group>"; };
+		7E6E66DE09380C7D00A347D8 /* uirt-raw2.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = "uirt-raw2.c"; sourceTree = "<group>"; };
+		7E6E66DF09380C7D00A347D8 /* uirt-raw2.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = "uirt-raw2.h"; sourceTree = "<group>"; };
+		7E6E66E009380C7D00A347D8 /* uirt-sm.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = "uirt-sm.c"; sourceTree = "<group>"; };
+		7E6E66E109380C7D00A347D8 /* uirt-sm.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = "uirt-sm.h"; sourceTree = "<group>"; };
+		7E6E66E209380C7D00A347D8 /* uirt.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = uirt.h; sourceTree = "<group>"; };
+		7E6E66E309380C7D00A347D8 /* usb.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = usb.c; sourceTree = "<group>"; };
+		7E6E66E409380C7D00A347D8 /* usb.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = usb.h; sourceTree = "<group>"; };
+		D2AAC06F0554671400DB518D /* libribsu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libribsu.a; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D2AAC06D0554671400DB518D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D2AAC0700554677100DB518D /* Carbon.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		034768DDFF38A45A11DB9C8B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D2AAC06F0554671400DB518D /* libribsu.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0867D691FE84028FC02AAC07 /* ribsu */ = {
+			isa = PBXGroup;
+			children = (
+				08FB77ACFE841707C02AAC07 /* Source */,
+				0867D69AFE84028FC02AAC07 /* External Frameworks and Libraries */,
+				034768DDFF38A45A11DB9C8B /* Products */,
+			);
+			name = ribsu;
+			sourceTree = "<group>";
+		};
+		0867D69AFE84028FC02AAC07 /* External Frameworks and Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				08FB77AAFE841565C02AAC07 /* Carbon.framework */,
+			);
+			name = "External Frameworks and Libraries";
+			sourceTree = "<group>";
+		};
+		08FB77ACFE841707C02AAC07 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				7E6E66D109380C7D00A347D8 /* debug.h */,
+				7E6E66D209380C7D00A347D8 /* printInterpretedError.c */,
+				7E6E66D309380C7D00A347D8 /* printInterpretedError.h */,
+				7E6E66D409380C7D00A347D8 /* ribsu-util.c */,
+				7E6E66D509380C7D00A347D8 /* ribsu-util.h */,
+				7E6E66D609380C7D00A347D8 /* ribsu.c */,
+				7E6E66D709380C7D00A347D8 /* ribsu.h */,
+				7E6E66D809380C7D00A347D8 /* tty.c */,
+				7E6E66D909380C7D00A347D8 /* tty.h */,
+				7E6E66DA09380C7D00A347D8 /* uirt-pronto.c */,
+				7E6E66DB09380C7D00A347D8 /* uirt-pronto.h */,
+				7E6E66DC09380C7D00A347D8 /* uirt-raw.c */,
+				7E6E66DD09380C7D00A347D8 /* uirt-raw.h */,
+				7E6E66DE09380C7D00A347D8 /* uirt-raw2.c */,
+				7E6E66DF09380C7D00A347D8 /* uirt-raw2.h */,
+				7E6E66E009380C7D00A347D8 /* uirt-sm.c */,
+				7E6E66E109380C7D00A347D8 /* uirt-sm.h */,
+				7E6E66E209380C7D00A347D8 /* uirt.h */,
+				7E6E66E309380C7D00A347D8 /* usb.c */,
+				7E6E66E409380C7D00A347D8 /* usb.h */,
+				32BAE0B70371A74B00C91783 /* ribsu_Prefix.pch */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		D2AAC06B0554671400DB518D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7E6E66E509380C7D00A347D8 /* debug.h in Headers */,
+				7E6E66E709380C7D00A347D8 /* printInterpretedError.h in Headers */,
+				7E6E66E909380C7D00A347D8 /* ribsu-util.h in Headers */,
+				7E6E66EB09380C7D00A347D8 /* ribsu.h in Headers */,
+				7E6E66ED09380C7D00A347D8 /* tty.h in Headers */,
+				7E6E66EF09380C7D00A347D8 /* uirt-pronto.h in Headers */,
+				7E6E66F109380C7D00A347D8 /* uirt-raw.h in Headers */,
+				7E6E66F309380C7D00A347D8 /* uirt-raw2.h in Headers */,
+				7E6E66F509380C7D00A347D8 /* uirt-sm.h in Headers */,
+				7E6E66F609380C7D00A347D8 /* uirt.h in Headers */,
+				7E6E66F809380C7D00A347D8 /* usb.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		D2AAC06E0554671400DB518D /* ribsu */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1DEB920108733DBB0010E9CD /* Build configuration list for PBXNativeTarget "ribsu" */;
+			buildPhases = (
+				D2AAC06B0554671400DB518D /* Headers */,
+				D2AAC06C0554671400DB518D /* Sources */,
+				D2AAC06D0554671400DB518D /* Frameworks */,
+			);
+			buildRules = (
+			);
+			buildSettings = {
+			};
+			dependencies = (
+			);
+			name = ribsu;
+			productName = ribsu;
+			productReference = D2AAC06F0554671400DB518D /* libribsu.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0867D690FE84028FC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DEB920508733DBB0010E9CD /* Build configuration list for PBXProject "ribsu" */;
+			buildSettings = {
+			};
+			buildStyles = (
+				4F0BB7EC011F40E904CA0E50 /* Debug */,
+				4F0BB7ED011F40E904CA0E50 /* Release */,
+			);
+			hasScannedForEncodings = 1;
+			mainGroup = 0867D691FE84028FC02AAC07 /* ribsu */;
+			productRefGroup = 034768DDFF38A45A11DB9C8B /* Products */;
+			projectDirPath = "";
+			targets = (
+				D2AAC06E0554671400DB518D /* ribsu */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D2AAC06C0554671400DB518D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7E6E66E609380C7D00A347D8 /* printInterpretedError.c in Sources */,
+				7E6E66E809380C7D00A347D8 /* ribsu-util.c in Sources */,
+				7E6E66EA09380C7D00A347D8 /* ribsu.c in Sources */,
+				7E6E66EC09380C7D00A347D8 /* tty.c in Sources */,
+				7E6E66EE09380C7D00A347D8 /* uirt-pronto.c in Sources */,
+				7E6E66F009380C7D00A347D8 /* uirt-raw.c in Sources */,
+				7E6E66F209380C7D00A347D8 /* uirt-raw2.c in Sources */,
+				7E6E66F409380C7D00A347D8 /* uirt-sm.c in Sources */,
+				7E6E66F709380C7D00A347D8 /* usb.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1DEB920208733DBB0010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = ribsu_Prefix.pch;
+				INSTALL_PATH = /usr/local/lib;
+				PRODUCT_NAME = ribsu;
+				ZERO_LINK = YES;
+			};
+			name = Debug;
+		};
+		1DEB920308733DBB0010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					ppc,
+					i386,
+				);
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = ribsu_Prefix.pch;
+				INSTALL_PATH = /usr/local/lib;
+				PRODUCT_NAME = ribsu;
+			};
+			name = Release;
+		};
+		1DEB920608733DBB0010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+			};
+			name = Debug;
+		};
+		1DEB920708733DBB0010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DEB920108733DBB0010E9CD /* Build configuration list for PBXNativeTarget "ribsu" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB920208733DBB0010E9CD /* Debug */,
+				1DEB920308733DBB0010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1DEB920508733DBB0010E9CD /* Build configuration list for PBXProject "ribsu" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB920608733DBB0010E9CD /* Debug */,
+				1DEB920708733DBB0010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0867D690FE84028FC02AAC07 /* Project object */;
+}
