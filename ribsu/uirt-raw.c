@@ -37,6 +37,7 @@ rr_parse(rr_ctx *ctx, UInt32 len, UInt8 *d)
     UInt32 (*fn)(rr_ctx *, UInt8 *);
     
     bzero(&ret, sizeof(ret));
+    bzero(ctx, sizeof(*ctx));
     
     n = 0;
     

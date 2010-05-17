@@ -15,6 +15,7 @@
 
 #include "printInterpretedError.h"
 #include "debug.h"
+#include "ribsu-util.h"
 
 #define MODULE_NAME usb
 DBG_MODULE_DEFINE();
@@ -283,13 +284,13 @@ getInterface(io_iterator_t interfaceIterator, IOUSBInterfaceInterface ***intf0)
     intf = NULL;
     
     usbInterface = IOIteratorNext(interfaceIterator);
-    if (usbInterface == nil)
+    if (usbInterface == 0)
     {
-        ERR("Unable to find an interface\n");
+        ERR("Unable to find an interface");
         return -1;
     }
     
-    while (usbInterface != nil)
+    while (usbInterface != 0)
     {
         intf = getUSBInterfaceInterface(usbInterface);
         
@@ -306,7 +307,7 @@ getInterface(io_iterator_t interfaceIterator, IOUSBInterfaceInterface ***intf0)
         usbInterface = IOIteratorNext(interfaceIterator);
     }
     
-    ERR("No interesting interfaces found\n");
+    ERR("No interesting interfaces found");
     IOObjectRelease(usbInterface);
     
     return -1;
@@ -392,6 +393,11 @@ openUSBInterface(IOUSBInterfaceInterface **intf)
     if (ret != kIOReturnSuccess)
     {
         printInterpretedError("Could not set configuration on device", ret);
+        if (ret == kIOReturnExclusiveAccess)
+        {
+            ERR("The USB device is already opened. Ensure nothing else is using it. Alternatively, you may have the kernel driver installed. Try to run with the -t option.");
+            exit(1);
+        }
         return -1;
     }
 	
