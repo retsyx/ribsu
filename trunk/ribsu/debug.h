@@ -17,6 +17,7 @@
 #define DBG_MODULE() extern DBG_MODULE_DEFINE()
 #define DBG_MODULE_OTHER(NAME) extern DBG_MODULE_DEFINE2(NAME)
 #define DBG_MODULE_DEFINE() DBG_MODULE_DEFINE2(MODULE_NAME)
+#define DBG_MODULE_DEFINE_WITH_LEVEL(LVL) DBG_MODULE_DEFINE2(MODULE_NAME) = (LVL)
 #define DBG_MODULE_DEFINE2(module) DBG_MODULE_DEFINE3(module)
 #define DBG_MODULE_DEFINE3(module) int dbg_level_##module
 
@@ -29,6 +30,7 @@
 #define OUT3(module, line, type, level, x...) if (dbg_level_##module >= level) \
 { \
     OUT4(type": "#module": "__FILE__"("#line"): "x); \
+    OUT4("\n"); \
 } \
 
 #define OUT4(x...) fprintf(stderr, x) 

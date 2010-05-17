@@ -250,7 +250,6 @@ usm_process_raw2(usm_ctx *ctx, buffer *in, buffer *out)
 {
     rr2_ctx rr;
     rr2_ret ret;
-
     if (in)
     {
         if (ctx->agg.len + in->len > USM_AGG_MAX)

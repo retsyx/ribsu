@@ -8,7 +8,7 @@
 #ifndef __UIRT_SM_H
 #define __UIRT_SM_H
 
-#define USM_AGG_MAX (256) 
+#define USM_AGG_MAX (4096) 
 
 typedef struct usm_ctx
 {

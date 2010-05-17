@@ -38,11 +38,10 @@ rr2_parse(rr2_ctx *ctx, UInt32 len, UInt8 *d)
     UInt32 (*fn)(rr2_ctx *, UInt8 *);
     
     bzero(&ret, sizeof(ret));
-    
+    bzero(ctx, sizeof(*ctx));
     n = 0;
     
     state = DDS_INIT;
-    
     while (n < len  &&  !ctx->done)
     {
         switch (state)
