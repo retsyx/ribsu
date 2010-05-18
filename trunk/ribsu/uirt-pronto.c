@@ -10,6 +10,7 @@
 #include "debug.h"
 #include "ribsu-util.h"
 #include "uirt-pronto.h"
+#include "uirt.h"
 
 #define MODULE_NAME uirt_pronto
 DBG_MODULE_DEFINE();
@@ -79,7 +80,7 @@ rp_output(rp_ctx *ctx, UInt8 *d)
         DBG("freq byte value = %Xh\n", (unsigned)v);
     }
     
-    d[n++] = 0x36; // RAW command
+    d[n++] = UIRT_CMD_TX_RAW; // RAW command
     
     d[n++] = 6 + (UInt8)(ctx->nof_pulses + ctx->nof_spaces); // RAW command length
     

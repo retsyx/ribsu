@@ -266,7 +266,7 @@ usm_process_raw2(usm_ctx *ctx, buffer *in, buffer *out)
     if (ret.n)
     {
         // prettify the data
-        out->len = rr2_output(&rr, out->buf);
+        out->len = rr2_output_pronto(&rr, out->buf);
         
         // fix up the aggregation buffer
         if (ret.m != ret.n)

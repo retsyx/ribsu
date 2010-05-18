@@ -84,6 +84,52 @@ rr2_parse(rr2_ctx *ctx, UInt32 len, UInt8 *d)
     return ret;
 }
 
+// Use internal representation to generate Pronto output
+UInt32 
+rr2_output_pronto(rr2_ctx *ctx, UInt8 *d)
+{
+    UInt32 n, t;
+    UInt32 nof_pulses, nof_spaces;
+    
+    n = 0;
+    
+    d[n++] = 0;
+    d[n++] = 0; // learned command
+    d[n++] = 0;
+    d[n++] = 4145146 / ctx->calc_freq; // frequency
+    d[n++] = 0;
+    d[n++] = 0; // once burst-pair count
+    d[n++] = ctx->nof_pulses >> 8;
+    d[n++] = ctx->nof_pulses & 0xff; // repeat burst-pair count
+    nof_pulses = ctx->nof_pulses;
+    nof_spaces = ctx->nof_spaces;
+    while (nof_pulses  ||  nof_spaces)
+    {
+        if (nof_pulses)
+        {
+            t = 560 * ctx->pulse[ctx->nof_pulses - nof_pulses] / ctx->calc_freq;
+            d[n++] = t >> 8;
+            d[n++] = t & 0xff;
+            nof_pulses--;
+        }
+        
+        if (nof_spaces)
+        {
+            t = 560 * ctx->space[ctx->nof_spaces - nof_spaces] / ctx->calc_freq;
+            d[n++] = t >> 8;
+            d[n++] = t & 0xff;
+            nof_spaces--;
+        }
+    }
+
+    // finish up with the interspace as the final space
+    t = (float)ctx->interspace * (float)ctx->calc_freq / 20000000.0;
+    d[n++] = t >> 8;
+    d[n++] = t & 0xff;
+    
+    return n;
+}
+
 // Use internal representation to generate RAW output good for
 // giving the USB-UIRT
 UInt32 
@@ -186,7 +232,7 @@ rr2_interspace(rr2_ctx *ctx, UInt8 *d)
     
     i = (UInt32)d[n++] << 8;
     i |= (UInt32)d[n++];
-    i = i * 512 / 500; // convert from 51.2us to 50us
+    i = i * 500 / 512; // convert from 51.2us to 50us
     
     ctx->interspace = i;
     
