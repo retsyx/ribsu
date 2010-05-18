@@ -33,5 +33,6 @@ typedef struct rr2_ret
 
 rr2_ret rr2_parse(rr2_ctx *ctx, UInt32 len, UInt8 *d);
 UInt32 rr2_output(rr2_ctx *ctx, UInt8 *d);
+UInt32 rr2_output_pronto(rr2_ctx *ctx, UInt8 *d);
 
 #endif

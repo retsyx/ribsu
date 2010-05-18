@@ -185,6 +185,7 @@ u_buf2hex(buffer *buf, buffer *hex)
     }
     
     *hexb = '\0';
+    hex->len = hexb - hex->buf;
 }
 
 void 
