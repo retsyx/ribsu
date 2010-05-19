@@ -8,6 +8,9 @@
 #ifndef __UIRT_SM_H
 #define __UIRT_SM_H
 
+#include "uirt-raw.h"
+#include "uirt-raw2.h"
+
 #define USM_AGG_MAX (4096) 
 
 typedef struct usm_ctx
@@ -17,6 +20,8 @@ typedef struct usm_ctx
     UInt32 default_frequency;
     buffer agg;
     UInt8  agg_buf[USM_AGG_MAX];
+    rr_ctx raw_ctx;
+    rr2_ctx raw2_ctx;
 } usm_ctx;
 
 void usm_init(usm_ctx *ctx);

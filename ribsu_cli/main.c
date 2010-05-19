@@ -115,7 +115,7 @@ void
 ribsu_read_callback(void *ctx0, buffer *buf)
 {
     buffer *hex;
-
+    UInt32 i;
     hex = buf_alloc(1025);
     if (!hex)
     {
@@ -124,7 +124,17 @@ ribsu_read_callback(void *ctx0, buffer *buf)
     }
 
     u_buf2hex(buf, hex);
-    printf("%s\n", hex->buf);
+    i = 0;
+    while (hex->buf[i])
+    {
+        printf("%c", hex->buf[i]);
+        if ((i & 3) == 3)
+        {
+            printf(" ");
+        }
+        i++;
+    }
+    printf("\n");
     
     buf_free(hex);
 }
@@ -158,7 +168,7 @@ stdin_read_callback(CFSocketRef s,
     fin = info;
     
     n = 0;
-    while ((c = fgetc(fin)) != '\n'  &&  c != EOF  &&  n < hex->max)
+    while ((c = fgetc(fin)) != '\n'  &&  c != ' ' &&  c != EOF  &&  n < hex->max)
     {
         hex->buf[n++] = c;
     }

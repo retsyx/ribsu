@@ -11,8 +11,6 @@
 #include "debug.h"
 #include "ribsu-util.h"
 #include "uirt.h"
-#include "uirt-raw.h"
-#include "uirt-raw2.h"
 #include "uirt-pronto.h"
 #include "uirt-sm.h"
 
@@ -51,6 +49,8 @@ usm_init(usm_ctx *ctx)
     // power on defaults
     ctx->mode = USM_M_UIR;
     ctx->state = USM_W_CODE;
+    rr_init(&ctx->raw_ctx, NULL);
+    rr2_init(&ctx->raw2_ctx, 0, NULL);
 }
 
 void
@@ -94,8 +94,14 @@ usm_process_uirt_more(usm_ctx *ctx, buffer *out)
         case USM_M_UIR:
             usm_process_uir(ctx, NULL, out);
             break;
+        case USM_M_ECHO:
+            usm_process_thru(ctx, NULL, out);
+            break;
         case USM_M_RAW:
             usm_process_raw(ctx, NULL, out);
+            break;
+        case USM_M_RAW2:
+            usm_process_raw2(ctx, NULL, out);
             break;
         default:
             out->len = 0;
@@ -116,6 +122,7 @@ usm_process_user(usm_ctx *ctx, buffer *in, buffer *out)
         case UIRT_CMD_MODE_RAW:
             ctx->mode = USM_M_RAW;
             ctx->state = USM_W_STATUS;
+            rr_init(&ctx->raw_ctx, NULL);
             break;
         case UIRT_CMD_GET_VERSION:
             ctx->state = USM_W_VER;
@@ -123,6 +130,7 @@ usm_process_user(usm_ctx *ctx, buffer *in, buffer *out)
         case UIRT_CMD_MODE_RAW2:
             ctx->mode = USM_M_RAW2;
             ctx->state = USM_W_STATUS;
+            rr2_init(&ctx->raw2_ctx, 0, NULL);
             break;
         case UIRT_CMD_GET_GPIO_CAPS:
         case UIRT_CMD_GET_GPIO_CFG:
@@ -204,7 +212,6 @@ usm_process_uir(usm_ctx *ctx, buffer *in, buffer *out)
 void
 usm_process_raw(usm_ctx *ctx, buffer *in, buffer *out)
 {
-    rr_ctx rr;
     rr_ret ret;
   
     if (in)
@@ -218,17 +225,17 @@ usm_process_raw(usm_ctx *ctx, buffer *in, buffer *out)
         }
     }
     
-    ret = rr_parse(&rr, ctx->agg.len, ctx->agg.buf);
+    ret = rr_parse(&ctx->raw_ctx, ctx->agg.len, ctx->agg.buf);
     if (ret.n)
     {
         // process only if something useful was found
         
         if (ctx->default_frequency)
         {
-            rr_set_frequency(&rr, ctx->default_frequency);
+            rr_set_frequency(&ctx->raw_ctx, ctx->default_frequency);
         }
         
-        out->len = rr_output(&rr, out->buf);
+        out->len = rr_output(&ctx->raw_ctx, out->buf);
     
         // fix up the aggregation buffer
         if (ret.m != ret.n)
@@ -248,7 +255,6 @@ usm_process_raw(usm_ctx *ctx, buffer *in, buffer *out)
 void
 usm_process_raw2(usm_ctx *ctx, buffer *in, buffer *out)
 {
-    rr2_ctx rr;
     rr2_ret ret;
     if (in)
     {
@@ -262,24 +268,22 @@ usm_process_raw2(usm_ctx *ctx, buffer *in, buffer *out)
     }
     
     // parse the data 
-    ret = rr2_parse(&rr, ctx->agg.len, ctx->agg.buf);
-    if (ret.n)
+    ret = rr2_parse(&ctx->raw2_ctx, ctx->agg.len, ctx->agg.buf);
+    if (ret.done)
     {
         // prettify the data
-        out->len = rr2_output_pronto(&rr, out->buf);
-        
-        // fix up the aggregation buffer
-        if (ret.m != ret.n)
-        {
-            buf_slide(&ctx->agg, ret.m);
-            bcopy(ret.d, ctx->agg.buf, ret.n - ret.m);
-        } else
-        {
-            ctx->agg.len = 0;
-        }
+        //out->len = rr2_output(&ctx->raw2_ctx, out->buf);
+        out->len = rr2_output_pronto(&ctx->raw2_ctx, out->buf);
     } else
     {
         out->len = 0;
+    }
+    
+    // fix up the aggregation buffer
+    buf_slide(&ctx->agg, ret.m);
+    if (ret.m != ret.n)
+    {
+        bcopy(ret.d, ctx->agg.buf, ret.n - ret.m);
     }
 }
 

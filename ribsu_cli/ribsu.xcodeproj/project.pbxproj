@@ -3,45 +3,20 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 42;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7E6E67A80938E3B100A347D8 /* libribsu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E6E67A70938E3B100A347D8 /* libribsu.a */; };
+		7E20CF7B11A1E67E0032F71F /* libribsu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E20CF7A11A1E67D0032F71F /* libribsu.a */; };
 		7EF1DEB608D54064003C891A /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 7E15AD3B08B70775006CE82B /* main.c */; };
 		7EF1DEBA08D54064003C891A /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09AB6884FE841BABC02AAC07 /* CoreFoundation.framework */; };
 		7EF1DEBB08D54064003C891A /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5F3CFCA024ABDDC01CE2351 /* IOKit.framework */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXBuildStyle section */
-		014CEA490018CE3211CA2923 /* Development */ = {
-			isa = PBXBuildStyle;
-			buildSettings = {
-				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				OPTIMIZATION_CFLAGS = "-O0";
-				ZERO_LINK = YES;
-			};
-			name = Development;
-		};
-		014CEA4A0018CE3211CA2923 /* Deployment */ = {
-			isa = PBXBuildStyle;
-			buildSettings = {
-				COPY_PHASE_STRIP = YES;
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				ZERO_LINK = NO;
-			};
-			name = Deployment;
-		};
-/* End PBXBuildStyle section */
-
 /* Begin PBXFileReference section */
 		09AB6884FE841BABC02AAC07 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = /System/Library/Frameworks/CoreFoundation.framework; sourceTree = "<absolute>"; };
 		7E15AD3B08B70775006CE82B /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
-		7E6E67A70938E3B100A347D8 /* libribsu.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libribsu.a; path = ../ribsu/build/Release/libribsu.a; sourceTree = SOURCE_ROOT; };
+		7E20CF7A11A1E67D0032F71F /* libribsu.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libribsu.a; path = ../ribsu/build/Debug/libribsu.a; sourceTree = SOURCE_ROOT; };
 		7EF1DEC108D54064003C891A /* ribsu */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ribsu; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5F3CFCA024ABDDC01CE2351 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
@@ -53,7 +28,7 @@
 			files = (
 				7EF1DEBA08D54064003C891A /* CoreFoundation.framework in Frameworks */,
 				7EF1DEBB08D54064003C891A /* IOKit.framework in Frameworks */,
-				7E6E67A80938E3B100A347D8 /* libribsu.a in Frameworks */,
+				7E20CF7B11A1E67E0032F71F /* libribsu.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,7 +56,7 @@
 		08FB779DFE84155DC02AAC07 /* External Frameworks and Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				7E6E67A70938E3B100A347D8 /* libribsu.a */,
+				7E20CF7A11A1E67D0032F71F /* libribsu.a */,
 				09AB6884FE841BABC02AAC07 /* CoreFoundation.framework */,
 				F5F3CFCA024ABDDC01CE2351 /* IOKit.framework */,
 			);
@@ -120,27 +95,6 @@
 			);
 			buildRules = (
 			);
-			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = "";
-				HEADER_SEARCH_PATHS = "";
-				INSTALL_PATH = "$(HOME)/bin";
-				LIBRARY_SEARCH_PATHS = "";
-				OTHER_CFLAGS = (
-					"-W",
-					"-Wall",
-					"-Wno-unused",
-				);
-				OTHER_LDFLAGS = "";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = ribsu;
-				REZ_EXECUTABLE = YES;
-				SECTORDER_FLAGS = "";
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-				);
-			};
 			dependencies = (
 			);
 			name = ribsu;
@@ -155,15 +109,11 @@
 		08FB7793FE84155DC02AAC07 /* Project object */ = {
 			isa = PBXProject;
 			buildConfigurationList = 7EF64C6E08BEF07600FC1BCF /* Build configuration list for PBXProject "ribsu" */;
-			buildSettings = {
-			};
-			buildStyles = (
-				014CEA490018CE3211CA2923 /* Development */,
-				014CEA4A0018CE3211CA2923 /* Deployment */,
-			);
+			compatibilityVersion = "Xcode 3.2";
 			hasScannedForEncodings = 1;
 			mainGroup = 08FB7794FE84155DC02AAC07 /* ribsu */;
 			projectDirPath = "";
+			projectRoot = "";
 			targets = (
 				7EF1DEA508D54064003C891A /* ribsu */,
 			);
@@ -206,6 +156,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(LIBRARY_SEARCH_PATHS)",
 					"$(SRCROOT)/../ribsu/build/Release",
+					"\"$(SRCROOT)/../ribsu/build/Debug\"",
 				);
 				OTHER_CFLAGS = (
 					"-W",
@@ -237,6 +188,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(LIBRARY_SEARCH_PATHS)",
 					"$(SRCROOT)/../ribsu/build/Release",
+					"\"$(SRCROOT)/../ribsu/build/Debug\"",
 				);
 				OTHER_CFLAGS = (
 					"-W",
@@ -266,6 +218,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(LIBRARY_SEARCH_PATHS)",
 					"$(SRCROOT)/../ribsu/build/Release",
+					"\"$(SRCROOT)/../ribsu/build/Debug\"",
 				);
 				OTHER_CFLAGS = (
 					"-W",
