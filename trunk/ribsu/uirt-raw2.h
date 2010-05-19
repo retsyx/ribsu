@@ -12,6 +12,8 @@
 
 typedef struct rr2_ctx
 {
+    int state;
+    int done;
     UInt8 repeat_count;
     UInt32 interspace; // interspace in 50us
     UInt32 freq_total; // frequency total
@@ -21,16 +23,17 @@ typedef struct rr2_ctx
     UInt32 pulse[RR2_MAX_PULSES]; // pulse times in 400ns
     UInt32 nof_spaces;
     UInt32 space[RR2_MAX_PULSES]; // space times in 400ns
-    int done;
 } rr2_ctx;
 
 typedef struct rr2_ret
 {
+    int done;
     UInt32 n : 16;
     UInt32 m : 16;
     UInt8 d[2];
 } rr2_ret;
 
+UInt32 rr2_init(rr2_ctx *ctx, UInt32 len, UInt8 *d);
 rr2_ret rr2_parse(rr2_ctx *ctx, UInt32 len, UInt8 *d);
 UInt32 rr2_output(rr2_ctx *ctx, UInt8 *d);
 UInt32 rr2_output_pronto(rr2_ctx *ctx, UInt8 *d);

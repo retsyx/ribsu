@@ -22,7 +22,6 @@ enum {
 };
 
 
-static UInt32 rr_init(rr_ctx *ctx, UInt8 *d);
 static UInt32 rr_interspace(rr_ctx *ctx, UInt8 *d);
 static UInt32 rr_pulse(rr_ctx *ctx, UInt8 *d);
 static UInt32 rr_space(rr_ctx *ctx, UInt8 *d);
