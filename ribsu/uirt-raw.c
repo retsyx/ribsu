@@ -22,65 +22,73 @@ enum {
 };
 
 
-static UInt32 rr_interspace(rr_ctx *ctx, UInt8 *d);
-static UInt32 rr_pulse(rr_ctx *ctx, UInt8 *d);
-static UInt32 rr_space(rr_ctx *ctx, UInt8 *d);
+static UInt32 rr_interspace(rr_ctx *ctx, UInt32 len, UInt8 *d);
+static UInt32 rr_pulse(rr_ctx *ctx, UInt32 len, UInt8 *d);
+static UInt32 rr_space(rr_ctx *ctx, UInt32 len, UInt8 *d);
 
 // Parse RAW data and store internally
 rr_ret
 rr_parse(rr_ctx *ctx, UInt32 len, UInt8 *d)
 {
     rr_ret ret;
-    UInt32 n;
-    int state;
-    UInt32 (*fn)(rr_ctx *, UInt8 *);
-    
-    bzero(&ret, sizeof(ret));
-    bzero(ctx, sizeof(*ctx));
+    UInt32 n, m;
+    UInt32 (*fn)(rr_ctx *, UInt32, UInt8 *);
+    int nextState;
     
     n = 0;
     
-    state = DDS_INIT;
-    
     while (n < len  &&  !ctx->done)
     {
-        switch (state)
+        switch (ctx->state)
         {
             case DDS_INIT:
                 DMP("INIT\n");
                 fn = rr_init;
-                state = DDS_INTERSPACE;
+                nextState = DDS_INTERSPACE;
                 break;
             case DDS_INTERSPACE:
                 DMP("INTERSPACE\n");
                 fn = rr_interspace;
-                state = DDS_PULSE;
+                nextState = DDS_PULSE;
                 break;
             case DDS_PULSE:
                 DMP("PULSE\n");
                 fn = rr_pulse;
-                state = DDS_SPACE;
+                nextState = DDS_SPACE;
                 break;
             case DDS_SPACE:
                 DMP("SPACE\n");
                 fn = rr_space;
-                state = DDS_PULSE;
+                nextState = DDS_PULSE;
                 break;
             default:
                 fn = NULL;
         }
         
-        n += fn(ctx, &d[n]);
+        m = fn(ctx, len - n, &d[n]);
+        ctx->state = nextState;
+        if (m > len - n) break;
+        n += m;
     }
  
+    ret.n = n;
     if (ctx->done)
     {
-        ret.n = n;
-        ret.m = (ctx->done == 1 ? n - 2 : n); // partial
+        ret.done = 1;
+        if (ret.n >= 2)
+        {
+            ret.m = (ctx->done == 1 ? n - 2 : n); // partial
+        } else
+        {
+            ret.m = ret.n;
+        }
         ret.d[0] = ret.d[1] = 0; // 0 inter-space delay
+        ctx->state = DDS_INIT;
+        ctx->done = 0;
     } else
     {
-        ret.n = 0;
+        ret.done = 0;
+        ret.m = ret.n;
     }
     
     return ret;
@@ -175,7 +183,7 @@ rr_output(rr_ctx *ctx, UInt8 *d)
 }
 
 UInt32
-rr_init(rr_ctx *ctx, UInt8 *d)
+rr_init(rr_ctx *ctx, UInt32 len, UInt8 *d)
 {
     bzero(ctx, sizeof(*ctx));
     
@@ -186,12 +194,13 @@ rr_init(rr_ctx *ctx, UInt8 *d)
 }
 
 UInt32
-rr_interspace(rr_ctx *ctx, UInt8 *d)
+rr_interspace(rr_ctx *ctx, UInt32 len, UInt8 *d)
 {
     UInt32 n, i;
     
     n = 0;
-    
+
+    if (len < 2) return -len;
     i = (UInt32)d[n++] << 8;
     i |= (UInt32)d[n++];
     
@@ -201,12 +210,12 @@ rr_interspace(rr_ctx *ctx, UInt8 *d)
 }
 
 UInt32
-rr_pulse(rr_ctx *ctx, UInt8 *d)
+rr_pulse(rr_ctx *ctx, UInt32 len, UInt8 *d)
 {
     UInt32 n, p;
     
     n = 0;
-    
+
     // time in 50us units
     p = (UInt32)d[n++];
     
@@ -217,7 +226,7 @@ rr_pulse(rr_ctx *ctx, UInt8 *d)
 }
 
 UInt32
-rr_space(rr_ctx *ctx, UInt8 *d)
+rr_space(rr_ctx *ctx, UInt32 len, UInt8 *d)
 {
     UInt32 n, s;
     static UInt32 max_s = 0;

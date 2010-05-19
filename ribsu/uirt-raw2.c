@@ -73,7 +73,7 @@ rr2_parse(rr2_ctx *ctx, UInt32 len, UInt8 *d)
         m = fn(ctx, len - n, &d[n]);
         ctx->state = nextState;
         DMP("m %d", (int)m);
-        if (m > len) break;
+        if (m > len - n) break;
         n += m;
         DMP("state, n, len, ctx->done = %d, %d, %d, %d",
             (int)ctx->state, (int)n, (int)len, ctx->done);
@@ -87,12 +87,12 @@ rr2_parse(rr2_ctx *ctx, UInt32 len, UInt8 *d)
         rr2_final(ctx, len - n, &d[n]);
         
         ret.done = 1;
-        if (ret.n)
+        if (ret.n >= 2)
         {
             ret.m = (ctx->done == 1 ? n - 2 : n); // partial
         } else
         {
-            ret.m = 0;
+            ret.m = ret.n;
         }
 
         ret.d[0] = ret.d[1] = 0;
