@@ -49,7 +49,7 @@ usm_init(usm_ctx *ctx)
     // power on defaults
     ctx->mode = USM_M_UIR;
     ctx->state = USM_W_CODE;
-    rr_init(&ctx->raw_ctx, NULL);
+    rr_init(&ctx->raw_ctx, 0, NULL);
     rr2_init(&ctx->raw2_ctx, 0, NULL);
 }
 
@@ -122,7 +122,7 @@ usm_process_user(usm_ctx *ctx, buffer *in, buffer *out)
         case UIRT_CMD_MODE_RAW:
             ctx->mode = USM_M_RAW;
             ctx->state = USM_W_STATUS;
-            rr_init(&ctx->raw_ctx, NULL);
+            rr_init(&ctx->raw_ctx, 0, NULL);
             break;
         case UIRT_CMD_GET_VERSION:
             ctx->state = USM_W_VER;
@@ -226,7 +226,7 @@ usm_process_raw(usm_ctx *ctx, buffer *in, buffer *out)
     }
     
     ret = rr_parse(&ctx->raw_ctx, ctx->agg.len, ctx->agg.buf);
-    if (ret.n)
+    if (ret.done)
     {
         // process only if something useful was found
         
@@ -236,20 +236,17 @@ usm_process_raw(usm_ctx *ctx, buffer *in, buffer *out)
         }
         
         out->len = rr_output(&ctx->raw_ctx, out->buf);
-    
-        // fix up the aggregation buffer
-        if (ret.m != ret.n)
-        {
-            buf_slide(&ctx->agg, ret.m);
-            bcopy(ret.d, ctx->agg.buf, ret.n - ret.m);
-        } else
-        {
-            ctx->agg.len = 0;
-        }
     } else
     {
         out->len = 0;
     }
+    
+    // fix up the aggregation buffer
+    buf_slide(&ctx->agg, ret.m);
+    if (ret.m != ret.n)
+    {
+        bcopy(ret.d, ctx->agg.buf, ret.n - ret.m);
+    }    
 }
 
 void
