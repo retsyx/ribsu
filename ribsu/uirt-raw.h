@@ -34,6 +34,7 @@ typedef struct rr_ret
 UInt32 rr_init(rr_ctx *ctx, UInt32 len, UInt8 *d);
 rr_ret rr_parse(rr_ctx *ctx, UInt32 len, UInt8 *d);
 void rr_set_frequency(rr_ctx *ctx, UInt32 freq);
+UInt32 rr_output_pronto(rr_ctx *ctx, UInt8 *d);
 UInt32 rr_output(rr_ctx *ctx, UInt8 *d);
 
 #endif

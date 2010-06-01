@@ -198,6 +198,7 @@ stdin_read_callback(CFSocketRef s,
                 n = 0;
             }
             ribsu_set_default_frequency(&ribsu, n);
+            printf("Default frequency %dHz", (int)n);
             break;
         case 'I': // toggle interpretation
              if (hex->len > 2)

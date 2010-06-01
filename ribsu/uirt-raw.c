@@ -100,6 +100,54 @@ rr_set_frequency(rr_ctx *ctx, UInt32 freq)
     ctx->freq = freq;
 }
 
+// Use internal representation to generate Pronto output
+UInt32 
+rr_output_pronto(rr_ctx *ctx, UInt8 *d)
+{
+    UInt32 n, t;
+    UInt32 nof_pulses, nof_spaces;
+
+    n = 0;
+    
+    d[n++] = 0;
+    d[n++] = 0; // learned command
+    d[n++] = 0;
+    d[n++] = 4145146 / ctx->freq; // frequency
+    d[n++] = 0;
+    d[n++] = 0; // once burst-pair count
+    d[n++] = ctx->nof_pulses >> 8;
+    d[n++] = ctx->nof_pulses & 0xff; // repeat burst-pair count
+    
+    nof_pulses = ctx->nof_pulses;
+    nof_spaces = ctx->nof_spaces;
+
+    while (nof_pulses  ||  nof_spaces)
+    {
+        if (nof_pulses)
+        {
+            t = 78000 * ctx->pulse[ctx->nof_pulses - nof_pulses] / ctx->freq;
+            d[n++] = t >> 8;
+            d[n++] = t & 0xff;
+            nof_pulses--;
+        }
+        
+        if (nof_spaces)
+        {
+            t = 78000 * ctx->space[ctx->nof_spaces - nof_spaces] / ctx->freq;
+            d[n++] = t >> 8;
+            d[n++] = t & 0xff;
+            nof_spaces--;
+        }
+    }
+    
+    // Add 10ms as the trailer (the USB-UIRT end of code gap definition)
+    t = ctx->freq / 100;
+    d[n++] = t >> 8;
+    d[n++] = t & 0xff;
+    
+    return n;    
+}
+
 // Use internal representation to generate RAW output good for
 // giving the USB-UIRT
 UInt32 
