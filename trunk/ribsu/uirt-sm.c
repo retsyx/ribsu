@@ -235,7 +235,8 @@ usm_process_raw(usm_ctx *ctx, buffer *in, buffer *out)
             rr_set_frequency(&ctx->raw_ctx, ctx->default_frequency);
         }
         
-        out->len = rr_output(&ctx->raw_ctx, out->buf);
+        //out->len = rr_output(&ctx->raw_ctx, out->buf);
+        out->len = rr_output_pronto(&ctx->raw_ctx, out->buf);
     } else
     {
         out->len = 0;
