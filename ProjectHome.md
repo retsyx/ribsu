@@ -1,0 +1,1 @@
+Interface code to work with the USB-UIRT. Capable of directly interfacing with the USB-UIRT from userspace and through the OS X FTDI driver.
