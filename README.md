@@ -6,5 +6,5 @@ Ribsu is squarely targeted at developers and is probably of limited use to end u
 
 ## Requirements
 
-USB-UIRT device
-Mac OS X 10.3.8 or later
+* USB-UIRT device
+* Mac OS X 10.3.8 or later
